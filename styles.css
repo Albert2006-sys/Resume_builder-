@@ -1,11 +1,266 @@
 /* Custom CSS for Resume Builder */
 
+/* Bootstrap-like Grid System and Utilities */
+.container {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 1200px;
+}
+
+.container-fluid {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+.col-12 { flex: 0 0 100%; max-width: 100%; }
+.col-lg-6 { flex: 0 0 100%; max-width: 100%; }
+.col-md-6 { flex: 0 0 100%; max-width: 100%; }
+.col-md-4 { flex: 0 0 100%; max-width: 100%; }
+.col-md-8 { flex: 0 0 100%; max-width: 100%; }
+
+@media (min-width: 768px) {
+    .col-md-4 { flex: 0 0 33.333333%; max-width: 33.333333%; }
+    .col-md-6 { flex: 0 0 50%; max-width: 50%; }
+    .col-md-8 { flex: 0 0 66.666667%; max-width: 66.666667%; }
+}
+
+@media (min-width: 992px) {
+    .col-lg-6 { flex: 0 0 50%; max-width: 50%; }
+}
+
+[class*="col-"] {
+    position: relative;
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+/* Bootstrap-like Components */
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: 0.25rem;
+}
+
+.card-header {
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 0;
+    background-color: rgba(0,0,0,.03);
+    border-bottom: 1px solid rgba(0,0,0,.125);
+    border-top-left-radius: calc(0.25rem - 1px);
+    border-top-right-radius: calc(0.25rem - 1px);
+}
+
+.card-body {
+    flex: 1 1 auto;
+    padding: 1.25rem;
+}
+
+.card-title {
+    margin-bottom: 0.75rem;
+}
+
+.btn {
+    display: inline-block;
+    font-weight: 400;
+    color: #212529;
+    text-align: center;
+    vertical-align: middle;
+    user-select: none;
+    background-color: transparent;
+    border: 1px solid transparent;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: 0.25rem;
+    text-decoration: none;
+    cursor: pointer;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.btn-secondary {
+    color: #fff;
+    background-color: #6c757d;
+    border-color: #6c757d;
+}
+
+.btn-success {
+    color: #fff;
+    background-color: #28a745;
+    border-color: #28a745;
+}
+
+.btn-info {
+    color: #fff;
+    background-color: #17a2b8;
+    border-color: #17a2b8;
+}
+
+.btn-danger {
+    color: #fff;
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+
+.btn-outline-primary {
+    color: #007bff;
+    border-color: #007bff;
+    background-color: transparent;
+}
+
+.btn-sm {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+    border-radius: 0.2rem;
+}
+
+.btn:hover {
+    opacity: 0.8;
+}
+
+.form-label {
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.form-control {
+    display: block;
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    box-sizing: border-box;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.form-control:focus {
+    color: #495057;
+    background-color: #fff;
+    border-color: #80bdff;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+}
+
+.form-check {
+    position: relative;
+    display: block;
+    padding-left: 1.25rem;
+}
+
+.form-check-input {
+    position: absolute;
+    margin-top: 0.3rem;
+    margin-left: -1.25rem;
+}
+
+.form-check-label {
+    margin-bottom: 0;
+}
+
+/* Utility Classes */
+.mb-0 { margin-bottom: 0; }
+.mb-2 { margin-bottom: 0.5rem; }
+.mb-3 { margin-bottom: 1rem; }
+.mb-4 { margin-bottom: 1.5rem; }
+.me-1 { margin-right: 0.25rem; }
+.me-2 { margin-right: 0.5rem; }
+.me-3 { margin-right: 1rem; }
+.ms-3 { margin-left: 1rem; }
+.mt-2 { margin-top: 0.5rem; }
+.mt-4 { margin-top: 1.5rem; }
+.p-0 { padding: 0; }
+.p-4 { padding: 1.5rem; }
+.py-3 { padding-top: 1rem; padding-bottom: 1rem; }
+.pb-2 { padding-bottom: 0.5rem; }
+
+.text-center { text-align: center; }
+.text-white { color: #fff; }
+.text-muted { color: #6c757d; }
+
+.bg-primary { background-color: #007bff; }
+.bg-secondary { background-color: #6c757d; }
+.bg-success { background-color: #28a745; }
+
+.border-bottom { border-bottom: 1px solid #dee2e6; }
+.float-end { float: right; }
+
+.sticky-top {
+    position: sticky;
+    top: 0;
+    z-index: 1020;
+}
+
+/* Icon Replacements */
+.fas, .fab {
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    line-height: 1;
+}
+
+/* Simple icon replacements using Unicode characters */
+.fa-file-alt::before { content: "📄"; }
+.fa-edit::before { content: "✏️"; }
+.fa-user::before { content: "👤"; }
+.fa-graduation-cap::before { content: "🎓"; }
+.fa-briefcase::before { content: "💼"; }
+.fa-cogs::before { content: "⚙️"; }
+.fa-plus::before { content: "+"; }
+.fa-download::before { content: "⬇️"; }
+.fa-trash::before { content: "🗑️"; }
+.fa-moon::before { content: "🌙"; }
+.fa-sun::before { content: "☀️"; }
+.fa-eye::before { content: "👁️"; }
+.fa-times::before { content: "×"; }
+.fa-envelope::before { content: "✉️"; }
+.fa-phone::before { content: "📞"; }
+.fa-map-marker-alt::before { content: "📍"; }
+.fa-linkedin::before { content: "💼"; }
+.fa-github::before { content: "🐙"; }
+.fa-spinner::before { content: "⟳"; animation: spin 1s linear infinite; }
+
+.fa-3x {
+    font-size: 3em;
+}
+
 /* Global Styles */
 :root {
-    --primary-color: #0d6efd;
+    --primary-color: #007bff;
     --secondary-color: #6c757d;
-    --success-color: #198754;
-    --info-color: #0dcaf0;
+    --success-color: #28a745;
+    --info-color: #17a2b8;
     --warning-color: #ffc107;
     --danger-color: #dc3545;
     --light-color: #f8f9fa;
@@ -16,6 +271,8 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #f8f9fa;
     line-height: 1.6;
+    margin: 0;
+    padding: 0;
 }
 
 /* Header Styles */
@@ -23,17 +280,12 @@ header {
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-/* Form Styles */
+/* Enhanced Card Styles */
 .card {
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
     border: none;
     border-radius: 10px;
     margin-bottom: 20px;
-}
-
-.form-label {
-    font-weight: 600;
-    color: #495057;
 }
 
 .form-control {
@@ -44,10 +296,10 @@ header {
 
 .form-control:focus {
     border-color: var(--primary-color);
-    box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
 
-/* Button Styles */
+/* Enhanced Button Styles */
 .btn {
     border-radius: 8px;
     font-weight: 500;

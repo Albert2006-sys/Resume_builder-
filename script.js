@@ -385,35 +385,136 @@ class ResumeBuilder {
     async downloadPDF() {
         const button = document.getElementById('downloadPDF');
         const originalText = button.innerHTML;
-        button.innerHTML = '<i class="fas fa-spinner fa-spin me-1"></i>Generating PDF...';
+        button.innerHTML = '⟳ Preparing...';
         button.disabled = true;
 
         try {
+            // Since external PDF libraries are blocked, we'll use the browser's print functionality
+            // Create a new window with just the resume content
             const previewElement = document.querySelector('.preview-content');
+            const resumeContent = previewElement.innerHTML;
             
-            // Use html2canvas to capture the content
-            const canvas = await html2canvas(previewElement, {
-                scale: 2,
-                useCORS: true,
-                backgroundColor: '#ffffff'
-            });
-
-            // Create PDF
-            const { jsPDF } = window.jspdf;
-            const pdf = new jsPDF('p', 'mm', 'a4');
-            
-            const imgData = canvas.toDataURL('image/png');
-            const imgWidth = 210;
-            const imgHeight = (canvas.height * imgWidth) / canvas.width;
-            
-            pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
-            
-            const fileName = this.getPersonalData().fullName || 'resume';
-            pdf.save(`${fileName.replace(/\s+/g, '_')}_resume.pdf`);
+            const printWindow = window.open('', '_blank');
+            printWindow.document.write(`
+                <!DOCTYPE html>
+                <html>
+                <head>
+                    <title>Resume - ${this.getPersonalData().fullName || 'Resume'}</title>
+                    <style>
+                        body {
+                            font-family: 'Times New Roman', serif;
+                            font-size: 12px;
+                            line-height: 1.4;
+                            color: #333;
+                            margin: 20px;
+                            background: white;
+                        }
+                        .preview-header {
+                            text-align: center;
+                            border-bottom: 2px solid #333;
+                            padding-bottom: 15px;
+                            margin-bottom: 20px;
+                        }
+                        .preview-name {
+                            font-size: 24px;
+                            font-weight: bold;
+                            margin-bottom: 5px;
+                            color: #2c3e50;
+                        }
+                        .preview-contact {
+                            font-size: 11px;
+                            color: #666;
+                            margin-bottom: 3px;
+                        }
+                        .preview-section {
+                            margin-bottom: 18px;
+                        }
+                        .preview-section-title {
+                            font-size: 14px;
+                            font-weight: bold;
+                            color: #2c3e50;
+                            border-bottom: 1px solid #bdc3c7;
+                            padding-bottom: 3px;
+                            margin-bottom: 8px;
+                            text-transform: uppercase;
+                            letter-spacing: 0.5px;
+                        }
+                        .preview-item {
+                            margin-bottom: 12px;
+                        }
+                        .preview-item-header {
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: flex-start;
+                            margin-bottom: 4px;
+                        }
+                        .preview-item-title {
+                            font-weight: bold;
+                            color: #2c3e50;
+                        }
+                        .preview-item-subtitle {
+                            color: #7f8c8d;
+                            font-style: italic;
+                        }
+                        .preview-item-date {
+                            color: #95a5a6;
+                            font-size: 10px;
+                        }
+                        .preview-item-description {
+                            color: #555;
+                            font-size: 11px;
+                            margin-top: 3px;
+                        }
+                        .preview-summary {
+                            text-align: justify;
+                            font-size: 11px;
+                            line-height: 1.4;
+                            color: #444;
+                        }
+                        .skills-grid {
+                            display: grid;
+                            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                            gap: 5px;
+                        }
+                        .skill-item {
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+                            padding: 3px 0;
+                            border-bottom: 1px solid #ecf0f1;
+                        }
+                        .skill-name {
+                            font-weight: 500;
+                            color: #2c3e50;
+                        }
+                        .skill-level {
+                            color: #7f8c8d;
+                            font-size: 10px;
+                        }
+                        @media print {
+                            body { margin: 0; }
+                            @page { margin: 0.5in; }
+                        }
+                    </style>
+                </head>
+                <body>
+                    ${resumeContent}
+                    <script>
+                        window.onload = function() {
+                            window.print();
+                            window.onafterprint = function() {
+                                window.close();
+                            };
+                        };
+                    </script>
+                </body>
+                </html>
+            `);
+            printWindow.document.close();
             
         } catch (error) {
             console.error('Error generating PDF:', error);
-            alert('Error generating PDF. Please try again.');
+            alert('Error preparing PDF. Please try again or use your browser\'s print function (Ctrl+P).');
         } finally {
             button.innerHTML = originalText;
             button.disabled = false;
