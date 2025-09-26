@@ -1,0 +1,7 @@
+/* Creative Bold Template */
+.resume-container.template-creative, .template-creative .resume-container { font-family: 'Poppins', sans-serif; color:#1f1147; }
+.template-creative .resume-header { text-align:center; border-bottom: 3px dashed #a78bfa; padding: 14px 0; }
+.template-creative .name { font-size: 28px; font-weight: 800; color:#7c3aed; }
+.template-creative .contact-info .contact-item { margin-right: 10px; color:#6d28d9; }
+.template-creative .section-title { font-size: 15px; color:#f59e0b; border-bottom: 2px dashed #a78bfa; margin: 14px 0; padding-bottom: 4px; }
+.template-creative .skills-grid { grid-template-columns: repeat(2, 1fr); }

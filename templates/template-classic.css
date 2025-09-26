@@ -1,0 +1,7 @@
+/* Classic Professional Template */
+.resume-container.template-classic, .template-classic .resume-container { font-family: 'Georgia', serif; color: #1f2937; }
+.template-classic .resume-header { text-align:center; border-bottom:2px solid #111827; padding:16px 0; }
+.template-classic .name { font-size: 28px; font-weight: 700; }
+.template-classic .contact-info { font-size: 12px; color:#6b7280; }
+.template-classic .section-title { font-size: 16px; text-transform: uppercase; border-bottom: 2px solid #111827; margin: 16px 0; padding-bottom: 6px; }
+.template-classic .skills-grid { grid-template-columns: repeat(2, 1fr); }

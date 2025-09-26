@@ -1,0 +1,7 @@
+/* Modern Clean Template */
+.resume-container.template-modern, .template-modern .resume-container { font-family: 'Inter', sans-serif; color:#0f172a; }
+.template-modern .resume-header { display:flex; align-items:center; gap:16px; border-bottom: 2px solid #e2e8f0; padding: 16px 0; }
+.template-modern .name { font-size: 26px; font-weight: 800; letter-spacing: -0.02em; }
+.template-modern .contact-info .contact-item { margin-right: 12px; color:#475569; }
+.template-modern .section-title { font-size: 15px; color:#1e40af; border-bottom: 2px solid #93c5fd; margin: 16px 0; padding-bottom: 4px; }
+.template-modern .skills-grid { grid-template-columns: repeat(3, 1fr); }
